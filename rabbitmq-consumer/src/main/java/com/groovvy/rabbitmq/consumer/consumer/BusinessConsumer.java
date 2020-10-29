@@ -18,7 +18,6 @@ public class BusinessConsumer {
     Logger log = LoggerFactory.getLogger(BusinessConsumer.class);
 
     private static final String FANOUT_QUEUE_NAME="fanout-queue";
-
     @RabbitListener(queues = FANOUT_QUEUE_NAME)
     public void receive(Message message, Channel channel) throws IOException {
         String msg = new String(message.getBody());
