@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.consumer;
+package com.groovvy.rabbitmq;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.consumer.consumer;
+package com.groovvy.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class BusinessConsumer {
     Logger log = LoggerFactory.getLogger(BusinessConsumer.class);
 
     private static final String FANOUT_QUEUE_NAME="fanout-queue";
-    @RabbitListener(queues = FANOUT_QUEUE_NAME)
+    @RabbitListener(queues = FANOUT_QUEUE_NAME,containerFactory="rabbitListenerContainerFactory")
     public void receive(Message message, Channel channel) throws IOException {
         String msg = new String(message.getBody());
         log.info("收到业务消息A：{}", msg);

@@ -1,5 +1,6 @@
-package com.groovvy.rabbitmq.producer.controller;
+package com.groovvy.rabbitmq.controller;
 
+import com.groovvy.rabbitmq.producer.MessageSender;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ProducerController {
     @Autowired
     AmqpTemplate amqpTemplate;
+    @Autowired
+    MessageSender messageSender;
 
     @GetMapping("/directSender")
     @ResponseBody
@@ -58,6 +61,14 @@ public class ProducerController {
 
 
         return "maxlength message send success";
+    }
+
+    @GetMapping("/confirmSender")
+    @ResponseBody
+    public String confirmSender(){
+        messageSender.send();
+
+        return "confirmSender send success";
     }
 
 }

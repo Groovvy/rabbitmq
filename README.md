@@ -12,6 +12,7 @@ RabbitMQ默认端口：5672。
 - 测试广播交换机:http://localhost:8081/deadSender
 - 测试死信队列的拒收情况:http://localhost:8081/deadSender
 - 测试死信队列的过期情况:http://localhost:8081/delaySender
+- 测试消息发送确认机制:http://localhost:8081/confirmSender
 # 消息会变成死信消息的场景
 - 消息被消费者拒绝签收
 - 消息过期，过了TTL存活时间

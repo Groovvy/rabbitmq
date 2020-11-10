@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.consumer.consumer;
+package com.groovvy.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class DeadConsumer {
     Logger log = LoggerFactory.getLogger(DeadConsumer.class);
     private static final String DEAD_QUEUE_NAME="dead-queue";
 
-    @RabbitListener(queues = DEAD_QUEUE_NAME)
+    @RabbitListener(queues = DEAD_QUEUE_NAME,containerFactory="rabbitListenerContainerFactory")
     public void receiveA(Message message, Channel channel) throws IOException {
         log.info("收到死信消息：" + new String(message.getBody()));
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

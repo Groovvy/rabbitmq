@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.consumer.consumer;
+package com.groovvy.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class DirectConsumer {
     Logger log = LoggerFactory.getLogger(DirectConsumer.class);
     private static final String DIRECT_QUEUE_NAME="direct-queue";
 
-    @RabbitListener(queues = DIRECT_QUEUE_NAME)
+    @RabbitListener(queues = DIRECT_QUEUE_NAME,containerFactory="rabbitListenerContainerFactory")
     public void receiveA(Message message, Channel channel) throws IOException {
         log.info("收到直连消息：" + new String(message.getBody()));
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

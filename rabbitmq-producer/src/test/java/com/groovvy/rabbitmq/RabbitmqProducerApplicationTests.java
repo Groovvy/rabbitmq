@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.producer;
+package com.groovvy.rabbitmq;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

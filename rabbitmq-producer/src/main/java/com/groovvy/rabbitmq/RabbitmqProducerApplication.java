@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.producer;
+package com.groovvy.rabbitmq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.groovvy.rabbitmq.consumer.consumer;
+package com.groovvy.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class TopicConsumer {
     Logger log = LoggerFactory.getLogger(TopicConsumer.class);
     private static final String TOP_QUEUE_NAME="topic-queue";
 
-    @RabbitListener(queues = TOP_QUEUE_NAME)
+    @RabbitListener(queues = TOP_QUEUE_NAME,containerFactory="rabbitListenerContainerFactory")
     public void receiveA(Message message, Channel channel) throws IOException {
         log.info("收到主题消息：" + new String(message.getBody()));
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
